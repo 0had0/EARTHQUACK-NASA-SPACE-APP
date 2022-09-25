@@ -11,6 +11,7 @@ const colorScale = d3.scaleOrdinal(['orangered', 'mediumblue', 'darkgreen', 'yel
 const labelsTopOrientation = new Set(['Apollo 12', 'Luna 2', 'Luna 20', 'Luna 21', 'Luna 24', 'LCROSS Probe']); // avoid label collisions
 
 function useForceUpdate(){
+    /* eslint-disable-next-line no-unused-vars */
     const [_, setValue] = useState(0);
     useEffect(() => {
     setTimeout(() => setValue(value => value + 1), 1000)
