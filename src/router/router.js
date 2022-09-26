@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {Navigate} from "react-router";
 
 import LandingPage from "../screens/LandingPage/LandingPage";

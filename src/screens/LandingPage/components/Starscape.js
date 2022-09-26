@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import {useRef, useEffect,} from "react";
 import gsap from 'gsap'
 
