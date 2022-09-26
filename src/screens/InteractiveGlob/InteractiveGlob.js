@@ -18,6 +18,7 @@ function InteractiveGlob() {
             bumpImageUrl={`${process.env.PUBLIC_URL}/lunar_bumpmap.png`}
             globeImageUrl={`${process.env.PUBLIC_URL}/lunar_surface.png`}
             showGraticules={true}
+            waitForGlobeReady={false}
             labelsData={options[0].value ? JSON.parse(JSON.stringify(moonLocations)): []}
             labelText="label"
             labelSize={1.7}
