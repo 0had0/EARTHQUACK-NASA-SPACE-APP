@@ -8,8 +8,10 @@ import SideBar from "../SideBar/SideBar";
 const GlobLayout = () => {
     return (
         <GlobProvider>
-            <Box sx={{display: 'flex', flexDirection: 'row'}}>
+            <Box sx={{position: 'relative'}}>
+            <Box sx={{display: 'flex', flexDirection: 'row', position: 'absolute', top: 0, left: 0, minHeight: 200 }}>
                 <SideBar/>
+            </Box>
                 <Outlet/>
             </Box>
         </GlobProvider>

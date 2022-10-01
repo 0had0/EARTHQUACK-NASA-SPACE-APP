@@ -6,10 +6,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import {useNavigate} from "react-router";
 
 const navItems = ['About us']
 
 function Header() {
+  const navigate = useNavigate();
     return <React.Fragment>
       <AppBar position="fixed" elevation={0} sx={{backgroundColor: 'transparent'}}>
         <Toolbar>
@@ -24,9 +26,10 @@ function Header() {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, color: '#fff', '&:hover': {cursor:'pointer'} }}
+            onClick={() => navigate('/')}
           >
-            NASA SPACE APP
+            NASA SPACE APPS
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (

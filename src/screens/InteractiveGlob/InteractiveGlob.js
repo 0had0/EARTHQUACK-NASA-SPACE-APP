@@ -1,14 +1,18 @@
 /* eslint-disable */
-import React, {useContext} from 'react';
+import {useContext} from 'react';
 import Globe from 'react-globe.gl';
 import * as d3 from 'd3';
 
-import moonLocations from '../../constants/moon_landings'
-import useForceUpdate from "./useForceUpdate";
-import {GlobContext} from "../../contexts/glob.context";
 import ProgressiveImage from "react-progressive-image";
 
+
+import moonLocations from '../../constants/moon_landings'
+import {GlobContext} from "../../contexts/glob.context";
+
+import useForceUpdate from "./useForceUpdate";
+
 import placeholderImage from './lunar_surface_small.png'
+import apolloSvg from './apollo-string';
 
 const colorScale = d3.scaleOrdinal(['orangered', 'mediumblue', 'darkgreen', 'yellow']);
 
@@ -20,25 +24,27 @@ function InteractiveGlob() {
 
     return (
         <ProgressiveImage
-            src={'https://raw.githubusercontent.com/vasturiano/react-globe.gl/master/example/moon-landing-sites/lunar_surface.jpg'} placeholder={placeholderImage}>
+            src={'https://raw.githubusercontent.com/vasturiano/react-globe.gl/master/example/moon-landing-sites/lunar_surface.jpg'}
+            placeholder={placeholderImage}>
             {src => {
                 return <Globe
                     bumpImageUrl={"https://raw.githubusercontent.com/vasturiano/react-globe.gl/master/example/moon-landing-sites/lunar_bumpmap.jpg"}
                     globeImageUrl={src}
+                    backgroundColor={'#000'}
                     showGraticules={true}
                     waitForGlobeReady={true}
-                    labelsData={options[0].value ? JSON.parse(JSON.stringify(moonLocations)) : []}
-                    labelText="label"
-                    labelSize={1.7}
-                    labelDotRadius={0.4}
-                    labelDotOrientation={d => labelsTopOrientation.has(d.label) ? 'top' : 'bottom'}
-                    labelColor={d => colorScale(d.agency)}
-                    labelLabel={d => {
-                        return `<div><b>${d.label}</b></div>
-                        <div>${d.agency} - ${d.program} Program</div>
-                        <div>Landing on <i>${new Date(d.date).toLocaleDateString()}</i></div>`
+                    htmlElementsData={options[0].value ? JSON.parse(JSON.stringify(moonLocations)) : []}
+                    htmlElement={d => {
+                        const el = document.createElement('div');
+                        el.innerHTML = `${apolloSvg} ${d.label}`;
+                        el.style.color = colorScale(d.agency);
+                        el.style.width = `${d.size ?? 30}px`;
+
+                        el.style['pointer-events'] = 'auto';
+                        el.style.cursor = 'pointer';
+                        el.onclick = () => window.open(d.url, '_blank');
+                        return el;
                     }}
-                    onLabelClick={d => window.open(d.url, '_blank')}
                 />
             }}
         </ProgressiveImage>
