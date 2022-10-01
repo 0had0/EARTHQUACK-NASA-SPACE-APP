@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 export default `<svg
    width="36pt"
    height="36pt"
