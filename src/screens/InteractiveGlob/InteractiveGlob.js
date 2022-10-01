@@ -12,7 +12,7 @@ import {GlobContext} from "../../contexts/glob.context";
 import useForceUpdate from "./useForceUpdate";
 
 import placeholderImage from './lunar_surface_small.png'
-import apolloSvg from './apollo-string';
+import {apollo, lunar} from './string';
 
 const colorScale = d3.scaleOrdinal(['orangered', 'mediumblue', 'darkgreen', 'yellow']);
 
@@ -36,7 +36,7 @@ function InteractiveGlob() {
                     htmlElementsData={options[0].value ? JSON.parse(JSON.stringify(moonLocations)) : []}
                     htmlElement={d => {
                         const el = document.createElement('div');
-                        el.innerHTML = `${apolloSvg} ${d.label}`;
+                        el.innerHTML = `${d.program.toLowerCase() === 'luna' ? lunar : apollo} ${d.label}`;
                         el.style.color = colorScale(d.agency);
                         el.style.width = `${d.size ?? 30}px`;
 
