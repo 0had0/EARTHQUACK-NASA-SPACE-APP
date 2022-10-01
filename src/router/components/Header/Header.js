@@ -11,13 +11,12 @@ const navItems = ['About us']
 
 function Header() {
     return <React.Fragment>
-      <AppBar position="fixed" elevation={0}>
+      <AppBar position="fixed" elevation={0} sx={{backgroundColor: 'transparent'}}>
         <Toolbar>
              <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
-            // onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: 'none' } }}
           >
             <MenuIcon />
