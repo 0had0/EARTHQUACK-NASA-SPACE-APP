@@ -29,7 +29,7 @@ function Header() {
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, color: '#fff', '&:hover': {cursor:'pointer'} }}
             onClick={() => navigate('/')}
           >
-            NASA SPACE APPS
+            EarthQuack
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (

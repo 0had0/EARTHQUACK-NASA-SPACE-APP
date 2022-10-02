@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {Box, List, ListItem, ListItemText, ListSubheader} from "@mui/material";
 
 import {apollo, lunar} from '../../../screens/InteractiveGlob/string'
