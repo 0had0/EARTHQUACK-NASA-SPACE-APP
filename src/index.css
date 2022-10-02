@@ -8,13 +8,16 @@ body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  cursor: url('./noun-duck.svg'),url('./noun-duck.png'),auto;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+  cursor: url('./noun-duck.svg'),url('./noun-duck.png'),auto;
 }
 
 #root {
   background-color: black;
+  cursor: url('./noun-duck.svg'),url('./noun-duck.png'),auto;
 }
