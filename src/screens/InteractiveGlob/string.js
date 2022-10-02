@@ -1,8 +1,8 @@
 /* eslint-disable */
 
 export const lunar = `<svg
-   width="36pt"
-   height="53.972645pt"
+   width="20pt"
+   height="36.972645pt"
    version="1.1"
    viewBox="0 0 36 53.972645"
    id="svg1056"
