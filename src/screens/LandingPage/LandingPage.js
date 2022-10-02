@@ -23,14 +23,14 @@ function LandingPage() {
                 sx={{display: 'flex', flexDirection: 'column', height: '100vh', alignItems: 'center', justifyContent: 'center'}}>
                 <Typography sx={{ fontFamily: "Erica One", fontWeight: 400, color: '#fff', zIndex: 2, textAlign: 'center'}}
                                 variant="h1">We
-                        bring space to your screen!</Typography>
+                        Bring The Moon To You!</Typography>
                 <Button size={'large'} variant={'outlined'} sx={{ my: 4, borderColor: 'white', color: 'white', '&:hover': {
                 backgroundColor: 'white', color: 'black', borderColor: 'white'}
                 }}
                             onClick={() => navigate('/glob')}
                         endIcon={<East />}
                     >
-                        Start
+                        Launch
                     </Button>
             </Container>
         </Box>

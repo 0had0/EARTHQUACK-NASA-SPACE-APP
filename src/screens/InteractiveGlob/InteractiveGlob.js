@@ -15,7 +15,7 @@ import useForceUpdate from "./useForceUpdate";
 import placeholderImage from './lunar_surface_small.png'
 import {apollo, lunar} from './string';
 
-const colorScale = d3.scaleOrdinal(['white', 'cyan', 'yellow']);
+const colorScale = d3.scaleOrdinal(['white', 'cyan', 'red']);
 
 const colors = (a) => ({
     "dm": `rgba(255, 0, 0, ${a})`,
@@ -45,12 +45,13 @@ function InteractiveGlob() {
                     bumpImageUrl={"https://raw.githubusercontent.com/vasturiano/react-globe.gl/master/example/moon-landing-sites/lunar_bumpmap.jpg"}
                     globeImageUrl={src}
                     backgroundColor={'#000'}
+                    backgroundImageUrl={require('./img.png')}
                     showGraticules={true}
                     waitForGlobeReady={true}
                     htmlElementsData={options[0].value ? JSON.parse(JSON.stringify(moonLocations)) : []}
                     htmlElement={d => {
                         const el = document.createElement('div');
-                        el.innerHTML = `${d.program.toLowerCase() === 'luna' ? lunar : apollo}`;
+                        el.innerHTML = `${d.program.toLowerCase() === 'luna' ? lunar : apollo}\n${d.program}`;
                         el.style.color = colorScale(d.agency);
                         el.style.width = `${d.size ?? 30}px`;
 
