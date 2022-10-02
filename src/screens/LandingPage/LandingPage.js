@@ -9,7 +9,7 @@ import {East} from "@mui/icons-material";
 
 function LandingPage() {
     const navigate = useNavigate()
-    return <Box sx={{overflow: 'hidden',}}>
+    return <Box sx={{width: '100vw', height: '100vh',overflow: 'hidden',}}><Box >
         <VideoPlayer
             className="video"
             src={
@@ -33,7 +33,7 @@ function LandingPage() {
                         Launch
                     </Button>
             </Container>
-        </Box>
+        </Box></Box>
     </Box>
 }
 

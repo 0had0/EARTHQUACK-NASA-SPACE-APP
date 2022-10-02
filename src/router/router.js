@@ -5,6 +5,7 @@ import LandingPage from "../screens/LandingPage/LandingPage";
 import InteractiveGlob from "../screens/InteractiveGlob/InteractiveGlob";
 import HeaderLayout from "./components/Layout/HeaderLayout";
 import GlobLayout from "./components/Layout/GlobLayout";
+import Graphs from "../screens/Graphs/Graphs";
 
 export default [
     {
@@ -24,6 +25,10 @@ export default [
                         element: <InteractiveGlob/>
                     }
                 ]
+            },
+            {
+                path:'graph',
+                element: <Graphs />
             },
             {
                 path: '*',

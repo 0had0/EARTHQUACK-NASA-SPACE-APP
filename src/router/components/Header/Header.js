@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 import {useNavigate} from "react-router";
 import {Modal} from "@mui/material";
 
-const navItems = ['About us']
+const navItems = ['Graphs', 'About us']
 
 function Header() {
     const navigate = useNavigate();
@@ -42,6 +42,10 @@ function Header() {
                 <Box sx={{display: {xs: 'none', sm: 'block'}}}>
                     {navItems.map((item) => (
                         <Button key={item} sx={{color: '#fff'}} onClick={() => {
+                            if(item === 'Graphs') {
+                                navigate('/graph');
+                                return;
+                            }
                             setOpen(true);
                         }}>
                             {item}
