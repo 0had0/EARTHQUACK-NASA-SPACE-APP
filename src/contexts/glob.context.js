@@ -3,10 +3,12 @@ import {createContext, useReducer} from "react";
 export const GlobContext = createContext(null);
 
 const initialState = [
-    {label: 'toggle pinpoints', value: false},
-    {label: 'toggle AI moon quakes', value: false},
-    {label: 'toggle DM moon quakes', value: false},
-    {label: 'toggle SM moon quakes', value: false}
+    {label: 'toggle Apollo landmarks', value: true},
+    {label: 'toggle Luna landmarks', value: true},
+    {label: 'toggle Change landmarks', value: true},
+    {label: 'toggle Artificial Impact Arrivals', value: false},
+    {label: 'toggle Deep moon quakes', value: false},
+    {label: 'toggle Shallow moon quakes', value: false},
 ];
 
 const reducer = (state = initialState, action) => {

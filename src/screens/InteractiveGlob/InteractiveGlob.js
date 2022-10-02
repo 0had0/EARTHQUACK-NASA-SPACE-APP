@@ -13,7 +13,7 @@ import {GlobContext} from "../../contexts/glob.context";
 import useForceUpdate from "./useForceUpdate";
 
 import placeholderImage from './lunar_surface_small.png'
-import {apollo, lunar} from './string';
+import {apollo, lunar, change} from './string';
 
 const colorScale = d3.scaleOrdinal(['white', 'cyan', 'red']);
 
@@ -30,11 +30,17 @@ function InteractiveGlob() {
     useForceUpdate();
 
 
-    const filterArray = [options[1].value && 'ai', options[2].value && 'dm', options[3].value && 'sm']
+    const filteredLandMarkesArray = [options[0].value && 'apollo', options[1].value && 'luna', options[2].value && 'chinese lunar exploration'];
+    const filterMoonQuakesArray = [options[3].value && 'ai', options[4].value && 'dm', options[5].value && 'sm'];
+
+
+    const spacecraftlandingsFiltered = useMemo(() => moonLocations.filter(
+        (loca) => filteredLandMarkesArray.includes(loca?.program?.toLowerCase?.())
+    ) ?? [], [filteredLandMarkesArray]);
 
     const moonquakesLocationsFiltered = useMemo(() => moonquakeLocations.filter(
-        (loca) => filterArray.includes(loca.channel)
-    ) ?? [], [filterArray])
+        (loca) => filterMoonQuakesArray.includes(loca.channel)
+    ) ?? [], [filterMoonQuakesArray])
 
     return (
         <ProgressiveImage
@@ -48,10 +54,10 @@ function InteractiveGlob() {
                     backgroundImageUrl={require('./img.png')}
                     showGraticules={true}
                     waitForGlobeReady={true}
-                    htmlElementsData={options[0].value ? JSON.parse(JSON.stringify(moonLocations)) : []}
+                    htmlElementsData={Array.isArray(spacecraftlandingsFiltered) ? JSON.parse(JSON.stringify(spacecraftlandingsFiltered)) : []}
                     htmlElement={d => {
                         const el = document.createElement('div');
-                        el.innerHTML = `${d.program.toLowerCase() === 'luna' ? lunar : apollo}\n${d.program}`;
+                        el.innerHTML = `${d.program.toLowerCase() === 'luna' ? lunar : d.program.toLowerCase() === 'apollo' ? apollo : change}\n${d.label}`;
                         el.style.color = colorScale(d.agency);
                         el.style.width = `${d.size ?? 30}px`;
 
@@ -62,7 +68,7 @@ function InteractiveGlob() {
                         }
                         return el;
                     }}
-                    labelsData={Array.isArray(moonquakesLocationsFiltered) ? JSON.parse(JSON.stringify(moonquakesLocationsFiltered)) : []}
+                    labelsData={Array.isArray(filterMoonQuakesArray) ? JSON.parse(JSON.stringify(moonquakesLocationsFiltered)) : []}
                     labelLat={d => d.lat}
                     labelLng={d => d.lng}
                     labelText="channel"
